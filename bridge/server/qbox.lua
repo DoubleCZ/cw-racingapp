@@ -1,7 +1,11 @@
 if GetResourceState('qbx_core') ~= 'started' then return end
 
-exports.qbx_core:CreateUseableItem(Config.ItemName.gps, function(source, item)
-    openRacingApp(source)
+AddEventHandler('ox_inventory:usedItem', function(playerId, name, slotId, metadata)
+    if UseDebug then print('opening ui') end
+
+    if name == Config.ItemName.gps then
+        openRacingApp(playerId)
+    end
 end)
 
 -- Adds money to user
@@ -20,6 +24,13 @@ end
 function canPay(src, moneyType, cost)
     local player = exports.qbx_core:GetPlayer(tonumber(src))
     return player.PlayerData.money[moneyType] >= cost
+end
+
+-- Gives an item to a player
+function giveItem(src, itemName, amount, metadata)
+    local player = exports.qbx_core:GetPlayer(tonumber(src))
+    if not player then return false end
+    return player.Functions.AddItem(itemName, amount, nil, metadata)
 end
 
 -- Fetches the CitizenId by Source

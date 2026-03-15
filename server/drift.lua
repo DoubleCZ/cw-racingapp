@@ -48,7 +48,7 @@ RegisterNetEvent('cw-racingapp:server:updateRacerDataDrift', function(raceId, ch
     end
 
     if not Races[raceId] or not Races[raceId].Racers or not Races[raceId].Racers[citizenId] then
-        print('^1Player with src', src'  was updating positions in race they were not in^0')
+        print('^1Player with src', src, 'was updating positions in race they were not in^0')
         return
     end
 
@@ -74,6 +74,7 @@ RegisterNetEvent('cw-racingapp:server:updateRacerDataDrift', function(raceId, ch
     if Config.UseResetTimer and raceId then
         if Timers then Timers[raceId] = GetGameTimer() end
     end
+
 end)
 
 -- Internal: force-finish all remaining racers for a drift race (collect current drift scores)
@@ -175,7 +176,7 @@ function FinishDriftRacer(src, raceData, driftScore, carClass, vehicleModel, rac
     local citizenId = getCitizenId(src)
     
     if not Races[raceId] or not Races[raceId].Racers or not Races[raceId].Racers[citizenId] then
-        print('^1Player with src', src'  was updating positions in race they were not in^0')
+        print('^1Player with src', src, 'was updating positions in race they were not in^0')
         return
     end
 
