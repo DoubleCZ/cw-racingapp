@@ -4,7 +4,7 @@ games { 'gta5' }
 
 author 'Coffeelot & Wuggie'
 description 'CW Racing App'
-version '6.2.2'
+version '6.2.11'
 
 ui_page {
     "web/dist/index.html"
@@ -19,6 +19,7 @@ shared_scripts {
     'shared/head2head.lua',
     'shared/bounties.lua',
     'shared/autoHost.lua',
+    'shared/itemPayouts.lua',
     '@qbx_core/modules/playerdata.lua', -- remove this if you don't use qbox
 }
 
